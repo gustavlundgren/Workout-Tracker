@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { CiMail } from "react-icons/ci";
+import { createAPIEndpoint, ENDPOINTS } from "../api";
 
 export default function Signup() {
   const [username, setUsername] = useState();
@@ -19,17 +20,27 @@ export default function Signup() {
     // kolla användarnamn
     // kolla mail
     // kolla så lösenord stämmer överrens
+    return true;
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    const values = {
+      username: username,
+      email: email,
+      password: password,
+    };
 
     // validera uppgifterna
     if (validateSignup()) {
       // kör hash sha256 på lösenordet
 
       // kalla på API för att skapa en ny användare till databasen
-
+      createAPIEndpoint(ENDPOINTS.user)
+        .post(values)
+        .then((res) => console.log(res))
+        .catch((err) => console.log(err));
       // skicka användaren till appen
       navigate("/");
     }
