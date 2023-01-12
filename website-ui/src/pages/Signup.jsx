@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { CiMail } from "react-icons/ci";
@@ -39,7 +39,10 @@ export default function Signup() {
       // kalla på API för att skapa en ny användare till databasen
       createAPIEndpoint(ENDPOINTS.user)
         .post(values)
-        .then((res) => console.log(res))
+        .then((res) => {
+          console.log(res);
+          localStorage.setItem("currUser", `${res.data.id}`);
+        })
         .catch((err) => console.log(err));
       // skicka användaren till appen
       navigate("/");
@@ -63,8 +66,13 @@ export default function Signup() {
           }}
           value={username}
         />
-        <small>{usernameError}</small>
-        <input type='email' placeholder='Email' />
+        <small></small>
+        <input
+          type='email'
+          placeholder='Email'
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <CiMail />
         <small></small>
         <input
           type='password'
