@@ -42,7 +42,10 @@ export default function Signup() {
       // kalla på API för att skapa en ny användare till databasen
       createAPIEndpoint(ENDPOINTS.user)
         .post(values)
-        .then((res) => console.log(res))
+        .then((res) => {
+          console.log(res.data.id);
+          localStorage.setItem("UserID", res.data.id);
+        })
         .catch((err) => console.log(err));
       // skicka användaren till appen
       navigate("/");
@@ -68,6 +71,7 @@ export default function Signup() {
         />
         <small>{usernameError}</small>
         <input type='email' placeholder='Email' />
+        <CiMail />
         <small></small>
         <input
           type='password'
