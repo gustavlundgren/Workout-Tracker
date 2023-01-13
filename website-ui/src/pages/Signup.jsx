@@ -3,21 +3,32 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { CiMail } from "react-icons/ci";
 import { createAPIEndpoint, ENDPOINTS } from "../api";
+import { sha256 } from "../auth";
 
 export default function Signup() {
-  const [username, setUsername] = useState();
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
-  const [reTypedPassword, setReTypedPassword] = useState();
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [reTypedPassword, setReTypedPassword] = useState("");
 
-  const [usernameError, setUsernameError] = useState();
-  const [EmailError, setEmailError] = useState();
-  const [passwordError, setPasswordError] = useState();
+  const [usernameError, setUsernameError] = useState("");
+  const [EmailError, setEmailError] = useState("");
+  const [passwordError, setPasswordError] = useState("");
 
   const navigate = useNavigate();
 
+  const values = {
+    username: username,
+    email: email,
+    password: "",
+  };
+
   const validateSignup = () => {
     // kolla användarnamn
+    if (username.length < 3) {
+      setUsernameError("Username must be atleast 5 characters long");
+      return false;
+    }
     // kolla mail
     // kolla så lösenord stämmer överrens
     return true;
@@ -26,16 +37,8 @@ export default function Signup() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const values = {
-      username: username,
-      email: email,
-      password: password,
-    };
-
     // validera uppgifterna
     if (validateSignup()) {
-      // kör hash sha256 på lösenordet
-
       // kalla på API för att skapa en ny användare till databasen
       createAPIEndpoint(ENDPOINTS.user)
         .post(values)
@@ -100,6 +103,9 @@ const Container = styled.div`
     -webkit-box-shadow: 10px 10px 25px -2px rgba(0, 0, 0, 0.62);
     -moz-box-shadow: 10px 10px 25px -2px rgba(0, 0, 0, 0.62);
 
+    small {
+      color: red;
+    }
     h1 {
       height: 1rem;
     }
