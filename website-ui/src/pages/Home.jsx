@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { createAPIEndpoint, ENDPOINTS } from "../api";
+import { ClipLoader } from "react-spinners";
 
 export default function Home() {
   const [username, setUsername] = useState("");
@@ -20,5 +21,6 @@ export default function Home() {
       })
       .catch((err) => console.log(err));
   }, [username]);
-  return <div>Welcome {username}!</div>;
+
+  return <div></div>;
 }

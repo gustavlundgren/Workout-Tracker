@@ -576,3 +576,16 @@ C:\Users\gusta\OneDrive\Skrivbord\workout-tracker\Workout-Tracker\UsersAPI\Users
 C:\Users\gusta\OneDrive\Skrivbord\workout-tracker\Workout-Tracker\UsersAPI\UsersAPI\obj\Debug\net6.0\UsersAPI.pdb
 C:\Users\gusta\OneDrive\Skrivbord\workout-tracker\Workout-Tracker\UsersAPI\UsersAPI\obj\Debug\net6.0\UsersAPI.genruntimeconfig.cache
 C:\Users\gusta\OneDrive\Skrivbord\workout-tracker\Workout-Tracker\UsersAPI\UsersAPI\obj\Debug\net6.0\ref\UsersAPI.dll
+C:\Users\gusta\OneDrive\Skrivbord\workout-tracker\Workout-Tracker\UsersAPI\UsersAPI\bin\Debug\net6.0\Azure.Security.KeyVault.Certificates.dll
+C:\Users\gusta\OneDrive\Skrivbord\workout-tracker\Workout-Tracker\UsersAPI\UsersAPI\bin\Debug\net6.0\Azure.Security.KeyVault.Secrets.dll
+C:\Users\gusta\OneDrive\Skrivbord\workout-tracker\Workout-Tracker\UsersAPI\UsersAPI\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\gusta\OneDrive\Skrivbord\workout-tracker\Workout-Tracker\UsersAPI\UsersAPI\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.OpenIdConnect.dll
+C:\Users\gusta\OneDrive\Skrivbord\workout-tracker\Workout-Tracker\UsersAPI\UsersAPI\bin\Debug\net6.0\Microsoft.Identity.Web.dll
+C:\Users\gusta\OneDrive\Skrivbord\workout-tracker\Workout-Tracker\UsersAPI\UsersAPI\bin\Debug\net6.0\Microsoft.Identity.Web.Certificate.dll
+C:\Users\gusta\OneDrive\Skrivbord\workout-tracker\Workout-Tracker\UsersAPI\UsersAPI\bin\Debug\net6.0\Microsoft.Identity.Web.Certificateless.dll
+C:\Users\gusta\OneDrive\Skrivbord\workout-tracker\Workout-Tracker\UsersAPI\UsersAPI\bin\Debug\net6.0\Microsoft.Identity.Web.TokenCache.dll
+C:\Users\gusta\OneDrive\Skrivbord\workout-tracker\Workout-Tracker\UsersAPI\UsersAPI\bin\Debug\net6.0\Microsoft.IdentityModel.LoggingExtensions.dll
+C:\Users\gusta\OneDrive\Skrivbord\workout-tracker\Workout-Tracker\UsersAPI\UsersAPI\bin\Debug\net6.0\Microsoft.IdentityModel.Validators.dll
+C:\Users\gusta\OneDrive\Skrivbord\workout-tracker\Workout-Tracker\UsersAPI\UsersAPI\bin\Debug\net6.0\System.Security.Cryptography.Pkcs.dll
+C:\Users\gusta\OneDrive\Skrivbord\workout-tracker\Workout-Tracker\UsersAPI\UsersAPI\bin\Debug\net6.0\System.Security.Cryptography.Xml.dll
+C:\Users\gusta\OneDrive\Skrivbord\workout-tracker\Workout-Tracker\UsersAPI\UsersAPI\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Security.Cryptography.Pkcs.dll
