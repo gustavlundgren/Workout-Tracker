@@ -1,16 +1,17 @@
 import { default as axios, ENDPOINTS } from "../api/index";
 import useAuth from "./useAuth";
+import jwt_decode from "jwt-decode";
 
 const useToken = () => {
   const { setAuth } = useAuth();
 
-  const refresh = async () => {
-    const response = await axios.get(`/api/Auth/${ENDPOINTS.refresh}/`, {
+  const refresh = async (user) => {
+    const response = await axios.post(`/api/Auth/${ENDPOINTS.refresh}`, user, {
       withCredentials: true,
     });
     setAuth((prev) => {
       console.log(JSON.stringify(prev));
-      console.log(response.data.token);
+      console.log(jwt_decode(response.data.token));
       return { ...prev, token: response.data.token };
     });
     return response.data.token;
@@ -19,6 +20,5 @@ const useToken = () => {
 };
 
 export default useToken;
-
 
 // -TODO

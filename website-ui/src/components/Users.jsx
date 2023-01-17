@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
 import { ENDPOINTS, createAPIEndpoint } from "../api/index";
 import useToken from "../hooks/useToken";
+import useAuth from "../hooks/useAuth";
 
 function Users() {
   const [users, setUsers] = useState();
   const refresh = useToken();
+  const { auth } = useAuth();
 
   useEffect(() => {
     let isMounted = true;
@@ -41,7 +43,7 @@ function Users() {
       ) : (
         <p>No users to display</p>
       )}
-      <button onClick={() => refresh()}>Refresh</button>
+      <button onClick={() => refresh({ username: auth.user })}>Refresh</button>
       <br />
     </article>
   );

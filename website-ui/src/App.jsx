@@ -6,6 +6,7 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Layout from "./components/Layout";
 import Missing from "./components/Missing";
+import NewWorkout from "./components/NewWorkout";
 
 export default function App() {
   return (
@@ -18,6 +19,7 @@ export default function App() {
         {/* protected routes */}
         <Route element={<RequreAuth />}>
           <Route path='/' element={<Home />} />
+          <Route path="new-workout" element={<NewWorkout />} />
         </Route>
 
         {/* catch all */}
