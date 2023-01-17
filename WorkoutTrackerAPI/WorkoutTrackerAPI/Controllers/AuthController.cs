@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Connections;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -49,6 +50,23 @@ namespace WorkoutTrackerAPI.Controllers
 
             return Ok(userModel);
         }
+
+        // REFRESH
+        // api/Auth/refresh
+        [HttpPost("refresh")]
+        public async Task<ActionResult<string>> Refresh(UserDto request)
+        {
+            UserModel user = GetUserByUsername(request.Username);
+
+            if(user == null)
+            {
+                return NotFound();
+            }
+
+            user.Token = CreateToken(user);
+            return Ok(user);
+        }
+
 
         // REGISTER
         // api/Auth/register

@@ -2,11 +2,16 @@ import axios from "axios";
 
 export const BASE_URL = "https://localhost:7243";
 
+export default axios.create({
+  baseURL: BASE_URL,
+});
+
 export const ENDPOINTS = {
   register: "register",
   login: "login",
   getUserById: "GetUser",
   getAllUsers: "GetUsers",
+  refresh: "refresh"
 };
 
 export const createAPIEndpoint = (endpoint) => {
@@ -20,5 +25,6 @@ export const createAPIEndpoint = (endpoint) => {
     delete: (id) => axios.delete(url + id),
     fetchAllUsers: (controller) =>
       axios.get(url, { signal: controller.signal }),
+    refresh: axios.get(url, { withCredentials: true }),
   };
 };

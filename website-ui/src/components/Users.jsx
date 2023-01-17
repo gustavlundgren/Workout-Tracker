@@ -1,15 +1,17 @@
 import { useState, useEffect } from "react";
-import { BASE_URL, ENDPOINTS, createAPIEndpoint } from "../api/index";
+import { ENDPOINTS, createAPIEndpoint } from "../api/index";
+import useToken from "../hooks/useToken";
 
 function Users() {
   const [users, setUsers] = useState();
+  const refresh = useToken();
 
   useEffect(() => {
     let isMounted = true;
     const controller = new AbortController();
 
     const getUsers = () => {
-      createAPIEndpoint(ENDPOINTS.GetAccount)
+      createAPIEndpoint(ENDPOINTS.getAllUsers)
         .fetchAllUsers(controller)
         .then((res) => {
           console.log(res.data);
@@ -39,6 +41,8 @@ function Users() {
       ) : (
         <p>No users to display</p>
       )}
+      <button onClick={() => refresh()}>Refresh</button>
+      <br />
     </article>
   );
 }

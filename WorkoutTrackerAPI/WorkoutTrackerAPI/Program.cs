@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 using WorkoutTrackerAPI.Models;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -17,7 +18,8 @@ var app = builder.Build();
 app.UseCors(options =>
 options.WithOrigins("http://localhost:3000")
 .AllowAnyMethod()
-.AllowAnyHeader());
+.AllowAnyHeader()
+.AllowCredentials());
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
