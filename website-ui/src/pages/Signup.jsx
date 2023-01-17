@@ -6,7 +6,6 @@ import { FaInfoCircle } from "react-icons/fa";
 import { BiError } from "react-icons/bi";
 import { BsKey } from "react-icons/bs";
 import { createAPIEndpoint, ENDPOINTS } from "../api";
-import { sha256 } from "../auth";
 import { ClipLoader } from "react-spinners";
 
 const USER_REGEX = /^[a-zA-Z][a-zA-Z0-9-_]{3,23}$/;
@@ -65,12 +64,6 @@ export default function Signup() {
 
   const navigate = useNavigate();
 
-  const values = {
-    username: user,
-    email: email,
-    password: pwd,
-  };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -87,7 +80,7 @@ export default function Signup() {
     setLoading(true);
 
     // kalla på API för att skapa en ny användare till databasen
-    createAPIEndpoint(ENDPOINTS.user)
+    createAPIEndpoint(ENDPOINTS.register)
       .post({ username: user, email: email, password: pwd })
       .then((res) => {
         console.log(JSON.stringify(res.data));
@@ -279,6 +272,7 @@ const Container = styled.div`
     border-radius: 0.5rem;
     width: 20rem;
     height: fit-content;
+    margin: 0;
   }
 
   .offscreen {

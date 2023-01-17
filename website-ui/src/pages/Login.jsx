@@ -1,15 +1,20 @@
-import { useRef, useState, useEffect, useContext } from "react";
+import { useRef, useState, useEffect } from "react";
+import { useNavigate, Link, useLocation } from "react-router-dom";
 import styled from "styled-components";
 import { CiUser } from "react-icons/ci";
 import { BiError } from "react-icons/bi";
 import { BsKey } from "react-icons/bs";
 import { ClipLoader } from "react-spinners";
-import { useNavigate } from "react-router-dom";
-import AuthContext from "../context/AuthProvider";
+import useAuth from "../hooks/useAuth";
 import { createAPIEndpoint, ENDPOINTS } from "../api";
 
 export default function Login() {
-  const { setAuth } = useContext(AuthContext);
+  const { setAuth } = useAuth();
+
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
+
   const userRef = useRef();
   const errRef = useRef();
 
@@ -20,10 +25,7 @@ export default function Login() {
   const [pwdFocus, setPwdFocus] = useState(false);
 
   const [errMsg, setErrMsg] = useState("");
-  const [success, setSuccess] = useState(false);
   const [loading, setLoading] = useState(false);
-
-  const navigate = useNavigate();
 
   useEffect(() => {
     userRef.current.focus();
@@ -33,32 +35,28 @@ export default function Login() {
     setErrMsg("");
   }, [user, pwd]);
 
-  useEffect(() => {
-    if (success) {
-      navigate("/");
-    }
-  }, [success]);
-
   const handleSubmit = (e) => {
     e.preventDefault();
 
     setLoading(true);
 
     createAPIEndpoint(ENDPOINTS.login)
-      .login({ username: user, password: pwd })
+      .post({ username: user, password: pwd })
       .then((res) => {
-        console.log(JSON.stringify(res.data));
-        const accessToken = res?.data?.accessToken;
-        setAuth({ user, pwd, accessToken });
+        console.log(JSON.stringify(res.data.token));
+        const token = res?.data?.token;
+        setAuth({ user, pwd, token });
         setUser("");
         setPwd("");
-        setSuccess(true);
+        navigate(from, { replace: true });
         setLoading(false);
       })
       .catch((err) => {
         console.log(err);
         if (!err?.response) {
           setErrMsg("No server response");
+        } else if (err.response?.status === 400) {
+          setErrMsg("Invalid login");
         } else {
           setErrMsg("Login failed");
         }
@@ -166,19 +164,8 @@ const Container = styled.div`
     }
   }
 
-  .instructions {
-    background-color: black;
-    color: white;
-    font-size: 1rem;
-    padding: 0.5rem;
-    border-radius: 0.5rem;
-    width: 20rem;
-    height: fit-content;
-  }
-
   .offscreen {
     display: none;
-    // TODO - set to display offscreen
   }
 
   form {

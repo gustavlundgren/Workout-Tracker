@@ -1,14 +1,16 @@
 import axios from "axios";
 
-export const BASE_URL = "http://localhost:5071";
+export const BASE_URL = "https://localhost:7243";
 
 export const ENDPOINTS = {
-  user: "User",
-  login: "User/AuthenticateLogin",
+  register: "register",
+  login: "login",
+  getUserById: "GetUser",
+  getAllUsers: "GetUsers",
 };
 
 export const createAPIEndpoint = (endpoint) => {
-  let url = `${BASE_URL}/api/${endpoint}/`;
+  let url = `${BASE_URL}/api/Auth/${endpoint}/`;
 
   return {
     fetch: axios.get(url),
@@ -16,6 +18,7 @@ export const createAPIEndpoint = (endpoint) => {
     post: (newRecord) => axios.post(url, newRecord),
     put: (id, updatedRecord) => axios.put(url, updatedRecord),
     delete: (id) => axios.delete(url + id),
-    login: (loginDetails) => axios.post(url, loginDetails),
+    fetchAllUsers: (controller) =>
+      axios.get(url, { signal: controller.signal }),
   };
 };
