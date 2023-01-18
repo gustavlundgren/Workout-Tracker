@@ -30,10 +30,36 @@ namespace WorkoutTrackerAPI.Controllers
 
         // GET
         // api/Auth/GetUsers
-        [HttpGet("GetUsers")]
-        public async Task<ActionResult<List<UserModel>>> GetAll()
+        [HttpPost("GetUsers")]
+        public async Task<ActionResult<List<UserModel>>> GetAll(string token)
         {
-            return await _context.Users.ToListAsync();
+            if(CheckTokenIsValid(token))
+            {
+                return await _context.Users.ToListAsync();
+            }
+
+            return StatusCode((int)HttpStatusCode.Forbidden);
+        }
+
+        public static long GetTokenExpirationTime(string token)
+        {
+            var handler = new JwtSecurityTokenHandler();
+            var jwtSecurityToken = handler.ReadJwtToken(token);
+            var tokenExp = jwtSecurityToken.Claims.First(claim => claim.Type.Equals("exp")).Value;
+            var ticks = long.Parse(tokenExp);
+            return ticks;
+        }
+
+        public static bool CheckTokenIsValid(string token)
+        {
+            var tokenTicks = GetTokenExpirationTime(token);
+            var tokenDate = DateTimeOffset.FromUnixTimeSeconds(tokenTicks).UtcDateTime;
+
+            var now = DateTime.Now.ToUniversalTime();
+
+            var valid = tokenDate >= now;
+
+            return valid;
         }
 
         // GET BY ID
@@ -63,7 +89,7 @@ namespace WorkoutTrackerAPI.Controllers
                 return NotFound();
             }
 
-            user.Token = CreateToken(user);
+            user.Token = CreateToken(user, 10);
             return Ok(user);
         }
 
@@ -114,7 +140,7 @@ namespace WorkoutTrackerAPI.Controllers
                     } 
                     else
                     {
-                        user.Token = CreateToken(user);
+                        user.Token = CreateToken(user, 20);
                         return Ok(user);
                     }
                 }
@@ -123,7 +149,7 @@ namespace WorkoutTrackerAPI.Controllers
             return BadRequest("User not found");
         }
 
-        private string CreateToken(UserModel user)
+        private string CreateToken(UserModel user, int time)
         {
             List<Claim> claims = new List<Claim>();
             
@@ -136,7 +162,7 @@ namespace WorkoutTrackerAPI.Controllers
 
             var token = new JwtSecurityToken(
                 claims: claims,
-                expires: DateTime.Now.AddDays(1),
+                expires: DateTime.Now.AddSeconds(time),
                 signingCredentials: creds);
 
             var jwt = new JwtSecurityTokenHandler().WriteToken(token);

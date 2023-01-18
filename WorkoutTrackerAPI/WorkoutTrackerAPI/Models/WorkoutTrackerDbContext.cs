@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using WorkoutTrackerAPI.Models;
 
 namespace WorkoutTrackerAPI.Models
 {
@@ -8,5 +9,8 @@ namespace WorkoutTrackerAPI.Models
 
 
         public DbSet<UserModel> Users { get; set; }
+
+
+        public DbSet<WorkoutTrackerAPI.Models.UserDto> UserDto { get; set; }
     }
 }

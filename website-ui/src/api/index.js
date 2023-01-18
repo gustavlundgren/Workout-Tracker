@@ -15,11 +15,12 @@ export const ENDPOINTS = {
   login: "login",
   getUserById: "GetUser",
   getAllUsers: "GetUsers",
+  refresh: "refresh",
 };
 
 export const createAPIEndpoint = (endpoint) => {
   let url = `${BASE_URL}/api/Auth/${endpoint}/`;
-
+ 
   return {
     fetch: () => axios.get(url),
     fetchById: (id) => axios.get(url + id),

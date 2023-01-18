@@ -7,6 +7,7 @@ import { BsKey } from "react-icons/bs";
 import { ClipLoader } from "react-spinners";
 import useAuth from "../hooks/useAuth";
 import { createAPIEndpoint, ENDPOINTS } from "../api";
+import { default as axios } from "../api/index";
 
 export default function Login() {
   const { setAuth } = useAuth();
@@ -35,34 +36,38 @@ export default function Login() {
     setErrMsg("");
   }, [user, pwd]);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     setLoading(true);
 
-    createAPIEndpoint(ENDPOINTS.login)
-      .post({ username: user, password: pwd })
-      .then((res) => {
-        console.log(JSON.stringify(res.data.token));
-        const token = res?.data?.token;
-        setAuth({ user, pwd, token });
-        setUser("");
-        setPwd("");
-        navigate(from, { replace: true });
-        setLoading(false);
-      })
-      .catch((err) => {
-        console.log(err);
-        if (!err?.response) {
-          setErrMsg("No server response");
-        } else if (err.response?.status === 400) {
-          setErrMsg("Invalid login");
-        } else {
-          setErrMsg("Login failed");
-        }
-        setLoading(false);
+    try {
+      const response = await axios.post("api/Login", {
+        username: user,
+        password: pwd,
       });
-  }; 
+
+      console.log(JSON.stringify(response.data));
+
+      const token = response?.data?.token;
+      setAuth({ user, pwd, token });
+
+      setUser("");
+      setPwd("");
+
+      navigate(from, { replace: true });
+      setLoading(false);
+    } catch (err) {
+      if (!err?.response) {
+        setErrMsg("No Server Response");
+      } else if (err.response?.status === 400) {
+        setErrMsg("Invalid login details");
+      } else {
+        setErrMsg("Login Failed");
+      }
+      setLoading(false);
+    }
+  };
 
   return (
     <Container>

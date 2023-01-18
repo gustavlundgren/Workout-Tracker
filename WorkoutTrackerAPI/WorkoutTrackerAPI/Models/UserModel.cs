@@ -1,4 +1,6 @@
-﻿namespace WorkoutTrackerAPI.Models
+﻿using MessagePack;
+using WorkoutTrackerAPI.Models;
+namespace WorkoutTrackerAPI.Models
 {
     public class UserModel
     {

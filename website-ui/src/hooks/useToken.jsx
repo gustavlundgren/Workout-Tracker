@@ -3,12 +3,16 @@ import useAuth from "./useAuth";
 import jwt_decode from "jwt-decode";
 
 const useToken = () => {
-  const { setAuth } = useAuth();
+  const { setAuth, auth } = useAuth();
 
-  const refresh = async (user) => {
-    const response = await axios.post(`/api/Auth/${ENDPOINTS.refresh}`, user, {
-      withCredentials: true,
-    });
+  const refresh = async () => {
+    const response = await axios.post(
+      `/api/Auth/${ENDPOINTS.refresh}`,
+      { username: auth.user },
+      {
+        withCredentials: true,
+      }
+    );
     setAuth((prev) => {
       console.log(JSON.stringify(prev));
       console.log(jwt_decode(response.data.token));
@@ -20,5 +24,3 @@ const useToken = () => {
 };
 
 export default useToken;
-
-// -TODO
