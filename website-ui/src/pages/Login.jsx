@@ -10,7 +10,7 @@ import { createAPIEndpoint, ENDPOINTS } from "../api";
 import { default as axios } from "../api/index";
 
 export default function Login() {
-  const { setAuth } = useAuth();
+  const { auth, setAuth } = useAuth();
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -35,7 +35,7 @@ export default function Login() {
   useEffect(() => {
     setErrMsg("");
   }, [user, pwd]);
-
+ 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -49,8 +49,9 @@ export default function Login() {
 
       console.log(JSON.stringify(response.data));
 
-      const token = response?.data?.token;
+      const token = response?.data;
       setAuth({ user, pwd, token });
+      localStorage.setItem("token", token);
 
       setUser("");
       setPwd("");

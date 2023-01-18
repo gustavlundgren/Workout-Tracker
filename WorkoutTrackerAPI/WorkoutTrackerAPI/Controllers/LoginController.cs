@@ -71,7 +71,7 @@ namespace WorkoutTrackerAPI.Controllers
 
             UserModel currentUser = users.FirstOrDefault(x => x.Username == request.Username);
 
-            if (VerifyPasswordHash(request.Password, currentUser.PasswordHash, currentUser.PasswordSalt))
+            if (currentUser != null && VerifyPasswordHash(request.Password, currentUser.PasswordHash, currentUser.PasswordSalt))
             {
                 return currentUser;
             }

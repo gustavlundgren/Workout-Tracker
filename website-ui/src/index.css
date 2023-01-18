@@ -38,3 +38,15 @@ code {
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+.back {
+  cursor: pointer;
+}
+
+.back:hover {
+  scale: 1.06;
+}
+
+.back:active {
+  scale: 1;
+}
