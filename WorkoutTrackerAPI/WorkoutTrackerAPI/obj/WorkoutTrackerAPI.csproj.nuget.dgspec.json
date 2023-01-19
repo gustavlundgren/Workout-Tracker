@@ -1,20 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\GustavLundgren\\Desktop\\react\\react-apps\\workout-tracker\\WorkoutTrackerAPI\\WorkoutTrackerAPI\\WorkoutTrackerAPI.csproj": {}
+    "C:\\Users\\gusta\\OneDrive\\Skrivbord\\workout-tracker\\Workout-Tracker\\WorkoutTrackerAPI\\WorkoutTrackerAPI\\WorkoutTrackerAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\GustavLundgren\\Desktop\\react\\react-apps\\workout-tracker\\WorkoutTrackerAPI\\WorkoutTrackerAPI\\WorkoutTrackerAPI.csproj": {
+    "C:\\Users\\gusta\\OneDrive\\Skrivbord\\workout-tracker\\Workout-Tracker\\WorkoutTrackerAPI\\WorkoutTrackerAPI\\WorkoutTrackerAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\GustavLundgren\\Desktop\\react\\react-apps\\workout-tracker\\WorkoutTrackerAPI\\WorkoutTrackerAPI\\WorkoutTrackerAPI.csproj",
+        "projectUniqueName": "C:\\Users\\gusta\\OneDrive\\Skrivbord\\workout-tracker\\Workout-Tracker\\WorkoutTrackerAPI\\WorkoutTrackerAPI\\WorkoutTrackerAPI.csproj",
         "projectName": "WorkoutTrackerAPI",
-        "projectPath": "C:\\Users\\GustavLundgren\\Desktop\\react\\react-apps\\workout-tracker\\WorkoutTrackerAPI\\WorkoutTrackerAPI\\WorkoutTrackerAPI.csproj",
-        "packagesPath": "C:\\Users\\GustavLundgren\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\GustavLundgren\\Desktop\\react\\react-apps\\workout-tracker\\WorkoutTrackerAPI\\WorkoutTrackerAPI\\obj\\",
+        "projectPath": "C:\\Users\\gusta\\OneDrive\\Skrivbord\\workout-tracker\\Workout-Tracker\\WorkoutTrackerAPI\\WorkoutTrackerAPI\\WorkoutTrackerAPI.csproj",
+        "packagesPath": "C:\\Users\\gusta\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\gusta\\OneDrive\\Skrivbord\\workout-tracker\\Workout-Tracker\\WorkoutTrackerAPI\\WorkoutTrackerAPI\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\GustavLundgren\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\gusta\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -100,7 +103,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }

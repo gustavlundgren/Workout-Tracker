@@ -1,12 +1,11 @@
 import { useRef, useState, useEffect } from "react";
-import { useNavigate, Link, useLocation } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import styled from "styled-components";
 import { CiUser } from "react-icons/ci";
 import { BiError } from "react-icons/bi";
 import { BsKey } from "react-icons/bs";
 import { ClipLoader } from "react-spinners";
 import useAuth from "../hooks/useAuth";
-import { createAPIEndpoint, ENDPOINTS } from "../api";
 import { default as axios } from "../api/index";
 
 export default function Login() {
@@ -35,7 +34,7 @@ export default function Login() {
   useEffect(() => {
     setErrMsg("");
   }, [user, pwd]);
- 
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -127,7 +126,9 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: coral;
+  // background-color: coral;
+  background-image: url("https://img1.wsimg.com/isteam/stock/5l8g4dj");
+  background-size: cover;
 
   .success-container {
     width: 30rem;

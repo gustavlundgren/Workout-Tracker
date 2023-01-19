@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { default as axios } from "../api/index";
 import useAuth from "../hooks/useAuth";
-import { AiOutlineArrowLeft } from "react-icons/ai";
+import { HiArrowNarrowLeft } from "react-icons/hi";
 import { useNavigate } from "react-router-dom";
+import styled from "styled-components";
 
 function Test() {
   const { auth } = useAuth();
@@ -30,12 +31,18 @@ function Test() {
     getMsg();
   }, []);
   return (
-    <section>
-      <AiOutlineArrowLeft className='back' onClick={() => navigate(-1)} />
+    <Container>
+      <HiArrowNarrowLeft className='back' onClick={() => navigate(-1)} />
       <h1>Profile Page</h1>
       <p>{msg}</p>
-    </section>
+    </Container>
   );
 }
 
 export default Test;
+
+const Container = styled.div`
+  svg {
+    font-size: 1.8rem;
+  }
+`;

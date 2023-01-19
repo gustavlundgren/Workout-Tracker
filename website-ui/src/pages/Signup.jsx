@@ -221,7 +221,8 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: coral;
+  background-image: url("https://img1.wsimg.com/isteam/stock/5l8g4dj");
+  background-size: cover;
 
   .success-container {
     width: 30rem;

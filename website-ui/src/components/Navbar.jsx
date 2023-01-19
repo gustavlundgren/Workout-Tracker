@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { CgProfile } from "react-icons/cg";
+import { CgProfile, CgGym } from "react-icons/cg";
 import { useNavigate } from "react-router-dom";
 
 function Navbar() {
@@ -8,16 +8,24 @@ function Navbar() {
 
   return (
     <Container>
+      <CgGym className='logo' onClick={() => navigate("/")} />
       <button>
-        <span class='box'>Hover!</span>
+        <span className='box'>
+          create <br /> workout
+        </span>
       </button>
       <button>
-        <span class='box'>Hover!</span>
+        <span className='box'>
+          My <br /> workouts
+        </span>
       </button>
-      <button>
-        <span class='box'>Hover!</span>
+      <button onClick={() => navigate("/explore")}>
+        <span className='box'>
+          Featured <br />
+          Exercises
+        </span>
       </button>
-      <CgProfile onClick={() => navigate("/profile")} />
+      <CgProfile className='profile' onClick={() => navigate("/profile")} />
     </Container>
   );
 }
@@ -29,13 +37,20 @@ const Container = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.85);
+
+  box-shadow: 1px 14px 31px -1px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 1px 14px 31px -1px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 1px 14px 31px -1px rgba(0, 0, 0, 0.75);
 
   svg {
     position: absolute;
-    right: 1%;
-    top: 1%;
+    top: 50%;
+    transform: translate(0, -50%);
     font-size: 2rem;
     cursor: pointer;
+    color: white;
     &:hover {
       scale: 1.06;
     }
@@ -43,6 +58,14 @@ const Container = styled.div`
     &:active {
       scale: 1;
     }
+  }
+
+  .profile {
+    right: 1%;
+  }
+
+  .logo {
+    left: 1%;
   }
 
   .box {
@@ -92,21 +115,21 @@ const Container = styled.div`
   }
 
   .box:hover:before {
-    border-color: #262626;
+    border-color: #ffffff;
     height: 100%;
     transform: translateX(0);
     transition: 0.3s transform linear, 0.3s height linear 0.3s;
   }
 
   .box:hover:after {
-    border-color: #262626;
+    border-color: #ffffff;
     height: 100%;
     transform: translateX(0);
     transition: 0.3s transform linear, 0.3s height linear 0.5s;
   }
 
   button {
-    color: black;
+    color: white;
     text-decoration: none;
     cursor: pointer;
     outline: none;

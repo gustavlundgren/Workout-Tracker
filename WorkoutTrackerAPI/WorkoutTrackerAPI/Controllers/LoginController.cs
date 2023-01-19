@@ -37,7 +37,7 @@ namespace WorkoutTrackerAPI.Controllers
 
             if (user != null)
             {
-                string token = GenerateToken(user, 2);
+                string token = GenerateToken(user, 20);
                 return Ok(token);
             }
             

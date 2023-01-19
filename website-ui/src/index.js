@@ -6,8 +6,9 @@ import { AuthProvider } from "./context/AuthProvider";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
+// React.StrictMode
 root.render(
-  <React.StrictMode>
+  <>
     <Router>
       <AuthProvider>
         <Routes>
@@ -15,5 +16,5 @@ root.render(
         </Routes>
       </AuthProvider>
     </Router>
-  </React.StrictMode>
+  </>
 );
