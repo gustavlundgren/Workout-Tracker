@@ -51,11 +51,6 @@ code {
   scale: 1;
 }
 
-.no-scrollbar::-webkit-scrollbar {
+*::-webkit-scrollbar {
   display: none;
-}
-
-.right {
-  position: absolute;
-  right: 0%;
 }

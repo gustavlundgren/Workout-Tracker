@@ -13,7 +13,7 @@ function Card({ data }) {
             Equipment: {data.equipment}
           </p>
         </div>
-        <button className='card-button'>More info</button>
+        <button className='card-button'>Add to workout</button>
       </div>
     </Container>
   );

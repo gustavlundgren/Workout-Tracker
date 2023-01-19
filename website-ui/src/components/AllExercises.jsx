@@ -26,7 +26,7 @@ function AllExercises() {
           config
         );
         setExercises(response.data);
-        console.log(exercises);
+        console.log(response.data);
         setLoading(false);
       } catch (err) {
         console.log(err);
@@ -38,22 +38,31 @@ function AllExercises() {
   }, [offset]);
 
   return (
-    <Container className='flex j-center'>
-      <HiArrowNarrowLeft className='back' onClick={() => navigate(-1)} />
-
-      <SlArrowRight
-        onClick={() => setOffset((o) => o + 10)}
-        className='right'
-      />
-      <SlArrowLeft onClick={() => setOffset((o) => o - 10)} className='left' />
-
-      {loading && <ClipLoader className='loader' color='#ffffff' size={70} />}
+    <Container className='flex j-center a-center column'>
+      <img src='http://trumpwallpapers.com/wp-content/uploads/Workout-Wallpaper-03-1920-x-1080.jpg' />
+      <div className='top-bar'>
+        <HiArrowNarrowLeft className='back' onClick={() => navigate(-1)} />
+      </div>
+      {loading && (
+        <>
+          <ClipLoader className='loader' color='#ffffff' size={70} />
+          <div className='placeholder'></div>
+        </>
+      )}
       {!loading && (
-        <div className='grid'>
-          {exercises.map(function (e) {
-            return <Card data={e} />;
-          })}
-        </div>
+        <>
+          <div className='grid'>
+            {exercises.map(function (e) {
+              return <Card data={e} />;
+            })}
+          </div>
+          <div className='controllers flex row'>
+            <SlArrowLeft
+              onClick={() => offset > 0 && setOffset((o) => o - 10)}
+            />
+            <SlArrowRight onClick={() => setOffset((o) => o + 10)} />
+          </div>
+        </>
       )}
     </Container>
   );
@@ -63,32 +72,36 @@ export default AllExercises;
 
 const Container = styled.div`
   overflow-x: hidden;
-  height: 100vh;
-  width: 100vw;
-  background-image: url("http://trumpwallpapers.com/wp-content/uploads/Workout-Wallpaper-03-1920-x-1080.jpg");
-  background-size: cover;
+  // background-image: url("http://trumpwallpapers.com/wp-content/uploads/Workout-Wallpaper-03-1920-x-1080.jpg");
 
-  .right {
-    right: 11%;
-    bottom: 4%;
-    cursor: pointer;
-    &:hover {
-      scale: 1.06;
-    }
-    &:active {
-      scale: 1;
+  .placeholder {
+    height: 700px;
+    width: 100vw;
+  }
+
+  img {
+    position: absolute;
+    z-index: -1;
+    width: 1920px;
+    height: 1080px;
+  }
+
+  .controllers {
+    margin-top: 3rem;
+    width: 80%;
+    justify-content: space-between;
+    svg {
+      color: white;
+      cursor: pointer;
     }
   }
 
-  .left {
-    left: 7%;
-    bottom: 4%;
-    cursor: pointer;
-    &:hover {
-      scale: 1.06;
-    }
-    &:active {
-      scale: 1;
+  .top-bar {
+    display: flex;
+    width: 100vw;
+    height: 2rem;
+    svg {
+      margin: 1rem;
     }
   }
 
@@ -101,18 +114,12 @@ const Container = styled.div`
 
   .grid {
     display: grid;
-    grid-template-columns: repeat(5, 20rem);
+    grid-template-columns: repeat(5, 17rem);
     gap: 1rem;
-    margin-top: 5rem;
+    margin-top: 4rem;
   }
   svg {
     font-size: 2rem;
     color: white;
-    position: absolute;
-  }
-
-  .back {
-    left: 1%;
-    top: 1%;
   }
 `;

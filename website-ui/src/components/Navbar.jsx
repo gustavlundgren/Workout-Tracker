@@ -3,14 +3,14 @@ import styled from "styled-components";
 import { CgProfile, CgGym } from "react-icons/cg";
 import { useNavigate } from "react-router-dom";
 
-function Navbar() {
+function Navbar({ scroll }) {
   const navigate = useNavigate();
 
   return (
     <Container>
       <CgGym className='logo' onClick={() => navigate("/")} />
       <button>
-        <span className='box'>
+        <span onClick={() => scroll()} className='box'>
           create <br /> workout
         </span>
       </button>
