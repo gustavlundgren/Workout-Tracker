@@ -14,7 +14,7 @@ function Navbar({ scroll }) {
           create <br /> workout
         </span>
       </button>
-      <button>
+      <button onClick={() => navigate("/workouts")}>
         <span className='box'>
           My <br /> workouts
         </span>

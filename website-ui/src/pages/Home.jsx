@@ -24,8 +24,10 @@ export default function Home() {
       </div>
 
       <section className='info'>
-        <InfoCard title={"So easy!"} info={fakeReveiwOne} />
-        <InfoCard />
+        <div className='info-cards flex column a-center'>
+          <InfoCard title={"So easy!"} info={fakeReveiwOne} />
+          <InfoCard />
+        </div>
         <NewWorkout refer={ref} />
         <a onClick={() => navigate("/about")}>About</a>
         <p> Copyright &copy; {date.getFullYear()}</p>
@@ -39,6 +41,12 @@ const Container = styled.div`
   height: 100vh;
   background-image: url("https://assets-global.website-files.com/5ef8d3756b1a2073623cb2bd/5f538eea54692f4e249f610b_solution-gym.jpg");
   background-size: cover;
+
+  .info-cards {
+    margin-top: 5rem;
+    width: 100vw;
+    gap: 2rem;
+  }
 
   a {
     cursor: pointer;

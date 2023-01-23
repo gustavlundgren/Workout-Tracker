@@ -8,6 +8,7 @@ import Layout from "./components/Layout";
 import Missing from "./components/Missing";
 import Profile from "./components/Profile";
 import AllExercises from "./components/AllExercises";
+import AllWorkouts from "./components/AllWorkouts";
 
 export default function App() {
   return (
@@ -22,6 +23,7 @@ export default function App() {
         {/* protected routes */}
         <Route element={<RequreAuth />}>
           <Route path='profile' element={<Profile />} />
+          <Route path='workouts' element={<AllWorkouts />} />
         </Route>
 
         {/* catch all */}

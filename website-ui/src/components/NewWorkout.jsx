@@ -91,4 +91,26 @@ const Container = styled.div`
   .form__field:invalid {
     box-shadow: none;
   }
+
+  button {
+    margin-top: 1rem;
+    font-size: 1.5rem;
+    background-color: mediumorchid;
+    color: white;
+    font-weight: bolder;
+    border-radius: 0.5rem;
+    border: none;
+    padding: 0.5rem;
+    cursor: pointer;
+    &:hover:enabled {
+      scale: 1.05;
+    }
+    &:active:enabled {
+      scale: 1;
+    }
+    &:disabled {
+      opacity: 70%;
+      cursor: default;
+    }
+  }
 `;
