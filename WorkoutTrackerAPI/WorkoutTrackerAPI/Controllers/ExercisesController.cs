@@ -31,7 +31,7 @@ namespace WorkoutTrackerAPI.Controllers
             
             foreach (var w in c)
             {
-                if(w.Name == currentUser.Username)
+                if(w.User == currentUser.Username)
                 {
                     output.Add(w);
                 }

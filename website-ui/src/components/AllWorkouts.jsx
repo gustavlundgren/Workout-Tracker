@@ -29,7 +29,7 @@ function AllWorkouts() {
       <ul>
         {workouts.map(function (e, eId) {
           {
-            !e.name && <p> No exercise to show </p>;
+            e && <p>No Workouts yet</p>;
           }
           return <li key={eId}>{e.name}</li>;
         })}
